@@ -1,7 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const mysql = rquire('mysql');
+const mysql = require('mysql');
 
 require('dotenv').config();
 
@@ -20,7 +20,16 @@ app.use(express.static('public'));
 
 // templating engine
 // change file extension
-app.engine('hbs', exphbs( {extname: '.hbs'}));
-app.set('view engine', 'hbs');
+// app.engine('hbs', exphbs( {extname: '.hbs'}));
+// app.set('view engine', 'hbs');
+const handlebars = exphbs.create({ extname: '.hbs' });
+app.engine('.hbs', handlebars.engine);
+app.set('view engine', '.hbs')
+
+// router
+// render home page
+app.get('', (req, res) => {
+    res.render('home');
+})
 
 app.listen(port, () => console.log(`listening on port ${port}`));
