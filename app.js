@@ -24,7 +24,23 @@ app.use(express.static('public'));
 // app.set('view engine', 'hbs');
 const handlebars = exphbs.create({ extname: '.hbs' });
 app.engine('.hbs', handlebars.engine);
-app.set('view engine', '.hbs')
+app.set('view engine', '.hbs');
+
+// connection pool
+// const pool = mysql.createPool({
+//     connectionLimit : 100,
+//     host: process.env.DB_HOST,
+//     user: process.env.DB_USER,
+//     password: process.env.DB_PASS,
+//     database: process.env.DB_NAME
+// });
+// moved to userController
+
+// connect to db
+// pool.getConnection((err, connection) => {
+//     if(err) throw err; // not connected
+//     console.log('Connected to DB' + connection.threadId);
+// })
 
 // router
 // render home page
