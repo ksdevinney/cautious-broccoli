@@ -7,3 +7,17 @@ let connection = mysql.createConnection({
   password: process.env.DB_PASS,
   database: process.env.DB_NAME
 });
+
+// view users
+exports.view = (req, res) => {
+  res.render('home');
+
+  connection.query('SELECT * FROM user', (err, rows) => {
+    if (!err) {
+      let removedUser = req.query.removed;
+      res.render('home', { rows, removedUser });
+    } else {
+      console.log(err);
+    }
+  });
+};
