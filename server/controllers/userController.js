@@ -10,14 +10,14 @@ let connection = mysql.createConnection({
 
 // view users
 exports.view = (req, res) => {
-  res.render('home');
-
-  connection.query('SELECT * FROM user', (err, rows) => {
+  connection.query('SELECT * FROM user WHERE status = "active"', 
+  (err, rows) => {
     if (!err) {
       let removedUser = req.query.removed;
       res.render('home', { rows, removedUser });
     } else {
       console.log(err);
     }
+    console.log("Data from user table: \n", rows)
   });
 };
