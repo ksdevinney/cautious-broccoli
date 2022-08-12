@@ -2,11 +2,12 @@ const mysql = require('mysql');
 
 // Connection Pool
 let connection = mysql.createConnection({
-  host: process.env.DB_HOST,
+  // host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME
 });
+// apparently wrong info for database...
 
 // view users
 exports.view = (req, res) => {
@@ -18,6 +19,6 @@ exports.view = (req, res) => {
     } else {
       console.log(err);
     }
-    console.log("Data from user table: \n", rows)
+    console.log("Data from user table: \n", rows);
   });
 };
