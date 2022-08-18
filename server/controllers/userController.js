@@ -8,6 +8,7 @@ let connection = mysql.createConnection({
   database: process.env.DB_NAME
 });
 // apparently wrong info for database...
+// or mysql isn't installed...how???
 
 // view users
 exports.view = (req, res) => {
@@ -40,4 +41,10 @@ exports.find = (req, res) => {
     console.log('the data from the search results: \n', rows);
   });
 
+};
+
+// add new user
+exports.form = (req, res) => {
+
+  res.render('add-user')
 }
