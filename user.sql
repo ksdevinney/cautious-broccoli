@@ -1,8 +1,7 @@
--- DROP DATABASE IF EXISTS `user_db`;
-CREATE DATABASE `user`;
-USE `user`;
+DROP DATABASE IF EXISTS `user_db`;
+CREATE DATABASE `user_db`;
 
-CREATE TABLE `user`(
+CREATE TABLE `user_db.user`(
     `id` INTEGER AUTO_INCREMENT NOT NULL,
     `firstName` VARCHAR(45) NOT NULL,
     `lastName` VARCHAR(45) NOT NULL,
@@ -13,4 +12,4 @@ CREATE TABLE `user`(
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO `user` (`firstName`, `lastName`, `email`, `phone`, `comments`, `status`) VALUES ('KT', 'Muppet', 'hello@hello.h', '444-444-4444', 'hello', 'active');
+INSERT INTO `user_db.user` (`firstName`, `lastName`, `email`, `phone`, `comments`, `status`) VALUES ('KT', 'Muppet', 'hello@hello.h', '444-444-4444', 'hello', 'active');

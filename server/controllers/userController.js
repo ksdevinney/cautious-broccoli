@@ -99,3 +99,16 @@ exports.update = (req, res) => {
       console.log('The data from the table: \n', rows);
     })
 }
+
+// delete user
+exports.delete = (req, res) => {
+  connection.query('DELECTE FROM user WHERE id = ?',
+  [req.params.id], (err, rows) => {
+    if(!err) {
+      res.redirect('/');
+    } else {
+      console.log(err);
+    }
+    console.log('data: \n', rows);
+  });
+}
