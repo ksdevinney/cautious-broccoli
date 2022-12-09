@@ -2,7 +2,7 @@ const mysql = require('mysql');
 
 // Connection Pool
 let connection = mysql.createConnection({
-  // host: process.env.DB_HOST,
+  host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME
@@ -102,7 +102,7 @@ exports.update = (req, res) => {
 
 // delete user
 exports.delete = (req, res) => {
-  connection.query('DELECTE FROM user WHERE id = ?',
+  connection.query('DELETE FROM user WHERE id = ?',
   [req.params.id], (err, rows) => {
     if(!err) {
       res.redirect('/');
@@ -110,5 +110,19 @@ exports.delete = (req, res) => {
       console.log(err);
     }
     console.log('data: \n', rows);
+  });
+}
+
+// view all
+exports.viewall = (req, res) => {
+
+  connection.query('SELECT * FROM user WHERE id = ?',
+  [req.params.id], (err, rows) => {
+    if (!err) {
+      res.render('view-user', {rows});
+    } else {
+      console.log(err);
+    }
+    console.log('The data: \n', rows);
   });
 }
