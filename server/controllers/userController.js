@@ -105,7 +105,8 @@ exports.delete = (req, res) => {
   connection.query('DELETE FROM user WHERE id = ?',
   [req.params.id], (err, rows) => {
     if(!err) {
-      res.redirect('/');
+      let removedUser = encodeURIComponent('User removed.');
+      res.redirect('/?removed=' + removedUser);
     } else {
       console.log(err);
     }
