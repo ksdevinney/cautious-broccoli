@@ -7,10 +7,13 @@ let connection = mysql.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD
 });
-// apparently wrong info for database...
+// db password fixed
+// created db in Workbench
+// queries don't run- "user_db.user doesn't exist"
 
 // view users
 exports.view = (req, res) => {
+  // runs in Workbench
   connection.query('SELECT * FROM user WHERE status = "active"',
     (err, rows) => {
       if (!err) {
